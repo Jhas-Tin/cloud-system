@@ -59,7 +59,7 @@ export default async function HomePage() {
       </SignedOut>
       <SignedIn>
         <div className="h-full w-full text-center text-2xl">
-          Welcome Back!
+          Welcome Back!!
           <Images/>
         </div>
       </SignedIn>
