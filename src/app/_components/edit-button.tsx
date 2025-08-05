@@ -2,9 +2,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
 
+
 export function EditButton({ idAsNumber }: { idAsNumber: number }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -41,7 +44,7 @@ export function EditButton({ idAsNumber }: { idAsNumber: number }) {
         });
         if (!uploadRes.ok) throw new Error("Failed to upload new image");
       }
-      setOpen(false); window.location.reload();
+      setOpen(false); router.refresh();
     } catch (err: any) {
       setError(err.message || "Unknown error");
     } finally {
