@@ -58,8 +58,8 @@ export default async function HomePage() {
         </div>
       </SignedOut>
       <SignedIn>
-        <div className="h-full w-full text-center text-2xl">
-          Welcome Back!!
+        <div className="min-h-screen w-full flex flex-col items-center px-2 py-4">
+          <div className="text-2xl font-semibold mb-2 text-center">Welcome Back to Cloud Storage!</div>
           <Images/>
         </div>
       </SignedIn>

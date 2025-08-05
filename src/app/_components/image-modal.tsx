@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog";
 import { DeleteButton } from "./delete-button";
+import { EditButton } from "./edit-button";
 
 interface ImageModalProps {
   image: {
@@ -95,7 +96,7 @@ const {user} = useUser();
                 </div>
                 <div className="mt-4">
                     <DeleteButton idAsNumber={image.id}/>
-                    
+                    <EditButton idAsNumber={image.id}/>
                 </div>
               </div>
             </div>
