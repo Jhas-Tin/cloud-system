@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { replaceImageFile } from "~/server/queries";
 import { utapi } from "~/server/uploadthing";
 
-export async function POST(request: NextRequest, context: { params: { id: string } }) {
+export async function POST(request: NextRequest, context: any) {
   try {
     const formData = await request.formData();
     const file = formData.get("file");
