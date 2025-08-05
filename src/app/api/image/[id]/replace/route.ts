@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { replaceImageFile } from "~/server/queries";
 import { utapi } from "~/server/uploadthing";
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+// @ts-expect-error Next.js App Router context typing
+export async function POST(request: NextRequest, { params }) {
   try {
     const formData = await request.formData();
     const file = formData.get("file");
