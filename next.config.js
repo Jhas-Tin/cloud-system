@@ -6,7 +6,7 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
-    tyoescript: {
+    typescript: {
         ignoreBuildErrors: true, // Ignore TypeScript errors during build
     },
     eslint: {
