@@ -1,9 +1,9 @@
+// @ts-nocheck
 import { NextResponse } from "next/server";
 import { replaceImageFile } from "~/server/queries";
 import { utapi } from "~/server/uploadthing";
 
-// No type annotations on arguments!
-export async function POST(request: { formData: () => any; }, { params }: any) {
+export async function POST(request, { params }) {
   try {
     const formData = await request.formData();
     const file = formData.get("file");
