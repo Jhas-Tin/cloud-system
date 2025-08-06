@@ -4,7 +4,6 @@ import { replaceImageFile } from "~/server/queries";
 import { utapi } from "~/server/uploadthing";
 
 export async function POST(request, context) {
-  const { params } = context;
   try {
     const formData = await request.formData();
     const file = formData.get("file");
@@ -15,7 +14,7 @@ export async function POST(request, context) {
     if (!uploadRes || !uploadRes.data || !uploadRes.data.url) {
       return NextResponse.json({ error: "Failed to upload file" }, { status: 500 });
     }
-    await replaceImageFile(Number(params.id), uploadRes.data.url);
+    await replaceImageFile(Number(context.params.id), uploadRes.data.url);
     return NextResponse.json({ success: true });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "Failed to replace image file";
