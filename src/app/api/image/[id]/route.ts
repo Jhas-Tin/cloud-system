@@ -13,3 +13,5 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     return NextResponse.json({ error: error.message || "Failed to update image name" }, { status: 500 });
   }
 }
+
+

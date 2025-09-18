@@ -44,7 +44,8 @@ export function EditButton({ idAsNumber }: { idAsNumber: number }) {
         });
         if (!uploadRes.ok) throw new Error("Failed to upload new image");
       }
-      setOpen(false); router.refresh();
+      setOpen(false); 
+      router.refresh();
     } catch (err: any) {
       setError(err.message || "Unknown error");
     } finally {
