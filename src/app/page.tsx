@@ -5,7 +5,7 @@ import { UploadDialog } from "./_components/upload-dialog";
 import { get } from "http";
 import { getMyImages } from "~/server/queries";
 import { ImageModal } from "./_components/image-modal";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export const dynamic = "force-dynamic"; // This page should always be dynamic
 
@@ -52,10 +52,36 @@ export default async function HomePage() {
   return (
     <main className="">
       <SignedOut>
-        <div className="h-full w-full text-center-2xl">
-          Please Sign In Above to Continue!
-          
-        </div>
+        <section className="relative h-screen w-full bg-gray-900 text-white flex items-center justify-center">
+          {/* Background image */}
+          <img
+            src="https://png.pngtree.com/thumb_back/fh260/background/20230415/pngtree-website-technology-line-dark-background-image_2344719.jpg" // replace with your own image
+            alt="Gallery Background"
+            className="absolute inset-0 w-full h-full object-cover opacity-70"
+          />
+
+          {/* Overlay content */}
+          <div className="relative z-10 text-center px-4 md:px-0">
+            <p className="tracking-widest uppercase text-sm md:text-base text-gray-200">
+              Welcome to
+            </p>
+            <h1 className="mt-4 text-4xl md:text-6xl font-bold tracking-wide text-white">
+              Cloud Art Gallery
+            </h1>
+            <p className="mt-4 text-lg md:text-2xl font-light text-gray-100">
+              Discover and explore amazing artworks
+            </p>
+
+            {/* Sign-in button */}
+            <div className="mt-8 inline-block">
+              <SignInButton>
+                <span className="px-8 py-3 bg-blue-600 text-white rounded-md font-semibold shadow-lg hover:bg-blue-700 transition-colors cursor-pointer">
+                  Sign In to Explore
+                </span>
+              </SignInButton>
+            </div>
+          </div>
+        </section>
       </SignedOut>
       <SignedIn>
         <div className="min-h-screen w-full flex flex-col items-center px-2 py-4">
