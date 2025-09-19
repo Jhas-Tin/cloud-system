@@ -1,12 +1,19 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+// src/middleware.ts in cloud-system-a
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import type { NextRequest } from "next/server";
 
-export default clerkMiddleware();
+const isPublicRoute = createRouteMatcher(["/api/images", "/favicon.ico", "/public(.*)"]);
+
+export default clerkMiddleware(async (auth, req: NextRequest) => {
+  // If the request path is NOT in public routes, then protect
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
   ],
 };
